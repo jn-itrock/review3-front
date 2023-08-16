@@ -4,6 +4,7 @@ export const theme = {
         green: "#08FB06",
         whithe: "#FAFAFA",
         black: "#3A3748",
+        darkBlack: "#1E1E1E",
         gray: "#75737D",
         grayLight: "#F2F1F4"
     },
@@ -13,6 +14,7 @@ export const theme = {
             xl: "88px",
             lg: "72px",
             md: "24px",
+            smlg: "18px",
             sm: "16px",
             xs: "14px"
         },
@@ -24,5 +26,5 @@ export const theme = {
             sm: "500",
             xs: "400"
         }
-    },
+    }
 }
