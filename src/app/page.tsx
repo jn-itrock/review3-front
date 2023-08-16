@@ -5,6 +5,7 @@ import { HomeHeader } from "@/components/homeHeader"
 import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
+import { events } from "./constants/index";
 
 export default function Home() {
   return (
@@ -12,56 +13,11 @@ export default function Home() {
       <HomeHeader />
       <InfoContainer />
       <EventsRankedTitle />
-      <EventRanked 
-        position={1}
-        logo="/images/ethLogo.svg"
-        points={1.4}
-        reviews={550}
-        title="Eth Latam"
-        location="Bue"
-        date="04 Ago"
-        likes={5000}
-      />
-      <EventRanked 
-        position={2}
-        logo="/images/ethLogo.svg"
-        points={1.4}
-        reviews={550}
-        title="Eth Latam"
-        location="Bue"
-        date="04 Ago"
-        likes={5000}
-      />
-      <EventRanked 
-        position={3}
-        logo="/images/ethLogo.svg"
-        points={1.4}
-        reviews={550}
-        title="Eth Latam"
-        location="Bue"
-        date="04 Ago"
-        likes={5000}
-      />
-      <EventRanked 
-        position={4}
-        logo="/images/ethLogo.svg"
-        points={1.4}
-        reviews={550}
-        title="Eth Latam"
-        location="Bue"
-        date="04 Ago"
-        likes={5000}
-      />
-      <EventRanked 
-        position={5}
-        logo="/images/ethLogo.svg"
-        points={1.4}
-        reviews={550}
-        title="Eth Latam"
-        location="Bue"
-        date="04 Ago"
-        likes={5000}
-      />
+
+      {events.map((ele, index)=>(
+        <EventRanked event={ele} index={index}/>
+      ))}
+      
     </ThemeProvider>
   )
 }

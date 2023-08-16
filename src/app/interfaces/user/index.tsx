@@ -5,17 +5,20 @@ export interface IUser {
 }
 
 export interface IEvent {
+    logo: string,
+    points: number,
+    likes: number
     name: string
     rate: string
     country: string
     date: string
     reviews: IReview[]
-    reviewsCount: string
+    reviewsCount: number
 }
 
 export interface IReview{
     user: IUser
-    rate: string
+    rate: number
     description: string
-    likes: string
+    likes:  number
 }
