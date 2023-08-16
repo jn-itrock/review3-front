@@ -13,7 +13,7 @@ export default function Reviews({name, rate, country, date, reviews, reviewsCoun
                     <h2 className={styles.subtitle}>People say</h2>
                     <Comment/>
                     {reviews.map((review: IReview, index: number)=>{
-                        return <Review user={review.user} rate={review.rate} description={review.description} likes={review.likes}/>
+                        return <Review key={index} user={review.user} rate={review.rate} description={review.description} likes={review.likes}/>
                     })}
                 </div>
             </>   
