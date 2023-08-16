@@ -1,5 +1,5 @@
-import { IUser } from "@/app/interfaces/user/index";
-import Image from "../../../../../node_modules/next/image";
+import { IUser } from "@/interfaces/user/index";
+import Image from "../../../../node_modules/next/image";
 import styles from './index.module.scss'
 
 interface IHeader {

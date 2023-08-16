@@ -1,7 +1,7 @@
 import Image from "../../../node_modules/next/image";
-import { Review } from "../components/review/index";
-import { events } from "../constants";
-import { IEvent, IReview } from "../interfaces/user/index";
+import { Review } from "../../components/review/index";
+import { events } from "../../constants";
+import { IEvent, IReview } from "../../interfaces/user/index";
 import { Comment } from "./comment/index";
 import styles from "./index.module.scss"
 import ReviewTitle from "./reviewTitle/index";

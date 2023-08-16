@@ -5,7 +5,7 @@ import { HomeHeader } from "@/components/homeHeader"
 import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
-import { events } from "./constants/index";
+import { events } from "../constants/index";
 
 export default function Home() {
   return (

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation'
-import { IEvent } from "@/app/interfaces/user/index";
+import { IEvent } from "@/interfaces/user/index";
 import { Wrapper, ContainerWrapper, RateWrapper, RateNumber, Reviews, InfoContainer, EventTitle, EventInfo, LikeWrapper, LikeNumber, ContainerTitleWrapper, ContainerTextWrapper, TitleTextBlack } from "./styles";
 
 
