@@ -13,6 +13,7 @@ export const ButtonDescription = styled.span`
     color: ${({theme}) => theme.colors.black};
     font-weight: ${({theme}) => theme.fonts.weight.xs};
     font-size: ${({theme}) => theme.fonts.size.sm};
+    cursor: pointer;
 `;
 
 export const HeaderButton = styled.button`

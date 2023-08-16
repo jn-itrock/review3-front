@@ -1,4 +1,5 @@
 "use client";
+import { useState } from 'react';
 import { useWalletLogin } from '@lens-protocol/react-web';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
@@ -9,8 +10,12 @@ import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
 import { events } from "../constants/index";
+import { CreateEvent } from '@/components/createEvent';
 
 export default function HomeClient() {
+
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const { execute: login, error: loginError, isPending: isLoginPending } = useWalletLogin();
 
@@ -38,7 +43,8 @@ export default function HomeClient() {
 
   return (
     <ThemeProvider theme={theme}>
-      <HomeHeader onLoginClick={onLoginClick}/>
+      <HomeHeader onLoginClick={onLoginClick} setIsOpen={setIsOpen}/>
+      {isOpen && <CreateEvent setIsOpen={setIsOpen}/>}
       <InfoContainer />
       <EventsRankedTitle />
 
