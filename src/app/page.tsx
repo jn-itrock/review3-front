@@ -10,6 +10,7 @@ import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
 import { events } from "./constants/index";
 
+
 export default function Home() {
 
   const { execute: login, error: loginError, isPending: isLoginPending } = useWalletLogin();
