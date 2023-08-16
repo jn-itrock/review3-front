@@ -1,8 +1,4 @@
 "use client";
-<<<<<<< HEAD
-
-=======
->>>>>>> a2d25e9 (layout home)
 import { ThemeProvider } from "styled-components"
 import { theme } from "@/utils/theme"
 import { HomeHeader } from "@/components/homeHeader"
