@@ -4,7 +4,7 @@ import styles from "./index.module.scss"
 interface IReviewTitle {
     name: string
     rate: string
-    reviews: string
+    reviews: number
     country: string
     date: string
 }
