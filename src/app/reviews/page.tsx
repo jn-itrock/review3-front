@@ -1,5 +1,6 @@
 import Image from "../../../node_modules/next/image";
 import { Review } from "../components/review/index";
+import { events } from "../constants";
 import { IEvent, IReview } from "../interfaces/user/index";
 import { Comment } from "./comment/index";
 import styles from "./index.module.scss"
@@ -9,10 +10,10 @@ export default function Reviews({name, rate, country, date, reviews, reviewsCoun
     return <>
                 <div className={styles.banner}></div>
                 <div className={styles.reviewsContainer}>
-                    <ReviewTitle name={name} rate={rate} reviews={reviewsCount} country={country} date={date}/>
+                    <ReviewTitle name={events[0].name} rate={events[0].rate} reviews={events[0].reviewsCount} country={events[0].country} date={events[0].date}/>
                     <h2 className={styles.subtitle}>People say</h2>
                     <Comment/>
-                    {reviews.map((review: IReview, index: number)=>{
+                    {events[0].reviews.map((review: IReview, index: number)=>{
                         return <Review key={index} user={review.user} rate={review.rate} description={review.description} likes={review.likes}/>
                     })}
                 </div>

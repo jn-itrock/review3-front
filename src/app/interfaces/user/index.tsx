@@ -5,6 +5,7 @@ export interface IUser {
 }
 
 export interface IEvent {
+    id: string;
     logo: string,
     points: number,
     likes: number

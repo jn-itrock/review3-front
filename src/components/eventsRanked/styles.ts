@@ -5,6 +5,7 @@ export const ContainerWrapper = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
+    cursor: pointer;
 `;
 
 export const ContainerTitleWrapper = styled.div`
