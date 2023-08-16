@@ -9,7 +9,6 @@ export const Title = () => {
         <img 
             src="/images/headerTitle.png"
             style={{
-                width: "70%",
                 height: "313px"
             }}
         />

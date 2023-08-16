@@ -22,5 +22,6 @@ export const HeaderButton = styled.button`
     border-radius: 16px;
     margin-right: 205px;
     border: none;
+    cursor: pointer;
 `
 
