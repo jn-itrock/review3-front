@@ -1,54 +1,59 @@
 "use client";
 import { useState } from 'react';
-import { useWalletLogin } from '@lens-protocol/react-web';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { ThemeProvider } from "styled-components"
+import { useWalletLogin, useCreateProfile, useActiveProfile } from '@lens-protocol/react-web';
+import { useAccount } from 'wagmi';
 import { theme } from "@/utils/theme"
 import { HomeHeader } from "@/components/homeHeader"
 import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
-import { events } from '@/constants';
+import { events } from "../../constants/index";
+import { useWeb3Modal } from '@web3modal/react'
+import { useEffect } from 'react';
 import { CreateEvent } from '@/components/createEvent';
+import { ThemeProvider } from "styled-components"
 
 interface Props {
-  getData: Promise<number>
+  data: Response | null;
 }
 
-export default function HomeClient({getData}: Props) {
+export default function HomeClient({ data }: Props) {
+  const { open } = useWeb3Modal()
+  const {address, isConnected } = useAccount()
+  const { data: activeProfile } = useActiveProfile();
+  const { execute: login } = useWalletLogin();
+  const [ isOpen, setIsOpen ] = useState<boolean>(false);
+  const { execute: create } = useCreateProfile();
 
 
-  const [isOpen, setIsOpen] = useState(false);
 
-  const { execute: login, error: loginError, isPending: isLoginPending } = useWalletLogin();
+  useEffect(() => {
 
-  const { isConnected } = useAccount();
-  const { disconnectAsync } = useDisconnect();
+    const fetchData = async () => {
 
-  const { connectAsync } = useConnect({
-    connector: new InjectedConnector(),
-  });
+      try {
+        await login({
+          address: address!
+        })
 
-  const onLoginClick = async () => {
-    if (isConnected) {
-      await disconnectAsync();
+        if(!activeProfile){
+          await create({handle: "itrockdev"})
+        }
+      
+      }catch(e){
+        console.error(e);
+      }
+        
     }
+    fetchData()
 
-    const { connector } = await connectAsync();
-
-    if (connector instanceof InjectedConnector) {
-      const walletClient = await connector.getWalletClient();
-      await login({
-        address: walletClient.account.address,
-      });
-    }
-  };
+  }, [address])
+ 
 
   return (
     <ThemeProvider theme={theme}>
-      <HomeHeader onLoginClick={onLoginClick} setIsOpen={setIsOpen}/>
-      {isOpen && <CreateEvent setIsOpen={setIsOpen}/>}
+      <HomeHeader profile={{} as any} login={open} isConnected={isConnected} setIsOpen={setIsOpen} />
+      {isOpen && <CreateEvent setIsOpen={setIsOpen} />}
       <InfoContainer />
       <EventsRankedTitle />
 

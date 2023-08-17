@@ -16,6 +16,13 @@ export function Comment(){
         }
     }; 
 
+    const handleCreateReview = () => {
+        console.log({
+            review: value,
+            rate
+        })
+    };
+
     return <>
             <div className={styles.comment}>
                 <Image src="/avatars/avatar2.png" alt="comment-avatar" width={1} height={2}/>
@@ -40,7 +47,11 @@ export function Comment(){
 
                 <div className={styles.buttonsContainer}>
                     <button className={styles.cancel}>Cancel</button>
-                    <button className={styles.accept}>Review</button>
+                    <button 
+                        className={styles.accept}
+                        onClick={handleCreateReview}
+                    >Review
+                    </button>
                 </div>
             </div>}
         </>

@@ -1,3 +1,4 @@
+import { CollectPolicyType, ContentFocus,useCreatePost, useActiveProfile, ReferencePolicyType } from '@lens-protocol/react-web';
 import { Dispatch, SetStateAction, useState } from 'react';
 
 interface Props {
@@ -13,17 +14,11 @@ interface IValuesProps {
 
 export const CreateEvent = ({ setIsOpen }: Props) => {
 
-    const [values, setValue] = useState<IValuesProps>({
-        poapEventId: "",
-        title: "",
-        description: ""
-    })
 
-    const { poapEventId, title, description } = values;
-
-    const handleCreateEvent = async () =>{
+    const { data: activeProfile } = useActiveProfile();
+    const upload = async (): Promise<string> =>{
         try{
-            let url = "http://192.168.0.115:3000/event"
+            let url = "http://10.10.1.179:3000/event"
 
             const form = new FormData();
 
@@ -36,9 +31,39 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
             body: form
         })
         const response = await apiResponse.json();
+        console.log(response);
+        return `http://10.10.1.179:3000/event/${response._id}`
+        // return `http://192.168.0.115:3000/event/91929319319`
+        
         }catch(e){
             console.log("Este es el error", e);
+            return "Error"
         }
+    };
+    
+    const { execute: create, error, isPending } = useCreatePost({ publisher: activeProfile!, upload });
+
+    const [values, setValue] = useState<IValuesProps>({
+        poapEventId: "",
+        title: "",
+        description: ""
+    })
+
+    const { poapEventId, title, description } = values;
+
+  
+        const onSubmit = async (content: string) => {
+            await create({
+            content,
+            contentFocus: ContentFocus.TEXT_ONLY,
+            locale: 'en',
+            collect: {
+                type: CollectPolicyType.NO_COLLECT
+            },
+            reference: {
+                type: ReferencePolicyType.ANYONE
+            }
+        });
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +71,7 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
             ...prev,
             [e.target.name]: e.target.value
         }))
-    }
+    };
 
     return(
         <div style={{
@@ -116,7 +141,7 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
                     onClick={() => setIsOpen(false)}
                 >Cerrar popup</p>
                 <p
-                    onClick={() => handleCreateEvent()}
+                    onClick={() => onSubmit(`${values}`)}
                 >Crear Evento</p>
             </div>
         </div>

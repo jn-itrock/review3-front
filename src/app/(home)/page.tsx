@@ -2,9 +2,8 @@ import HomeClient from "./client";
 
 export default async function Home() {
 
-  // Ejecuta la peticion en la page HOC y envia la informacion por props al child component
-  const getData = Promise.resolve(1);
+  // const data: Response = await fetch("http://192.168.0.115:3000/event");
+const data: Response | null = null
 
-
-  return <HomeClient getData={getData} />
+  return <HomeClient data={data} />
 }
