@@ -11,6 +11,7 @@ export const ContainerTitleWrapper = styled.div`
 
   @media (min-width: 320px) {
     width: 100%;
+    align-items: center;
   }
 
   @media (min-width: 768px) {

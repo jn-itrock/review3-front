@@ -1,6 +1,11 @@
+@import '../../../styles/globals.scss';
+
 .comment{
     display: flex;
     align-items: center;
+    @include custom-web-viewport(425px){
+      padding: 0 15px;
+        }
 
     img{
         width: 25px;
@@ -39,6 +44,10 @@
     align-items: center;
     justify-content: space-between;
     margin: 16px 0 32px 0;
+
+    @include custom-web-viewport(425px){
+      padding: 0 15px;
+        }
 
     .starsContainer{
         display: flex;

@@ -30,7 +30,6 @@ export const HomeHeader = ({ profile, login, isConnected, setIsOpen }: Props) =>
         <HeaderContainer>
 
             <ButtonDescription>Start to receive reviewes</ButtonDescription>
-            <ButtonDescription>{ isConnected ? profile?.handle : ""}</ButtonDescription>
             <HeaderButton
                 disabled={false} onClick={() => handleOpenModal()}
             > Add your event 
