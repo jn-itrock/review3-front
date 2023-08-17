@@ -1,0 +1,5 @@
+@mixin custom-web-viewport($val){
+    @media (min-width: $val) {
+        @content;
+    }
+}

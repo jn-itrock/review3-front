@@ -9,10 +9,14 @@ import { HomeHeader } from "@/components/homeHeader"
 import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
-import { events } from "../constants/index";
+import { events } from '@/constants';
 import { CreateEvent } from '@/components/createEvent';
 
-export default function HomeClient() {
+interface Props {
+  getData: Promise<number>
+}
+
+export default function HomeClient({getData}: Props) {
 
 
   const [isOpen, setIsOpen] = useState(false);

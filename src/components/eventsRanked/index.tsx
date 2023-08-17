@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation'
-import { IEvent } from "@/app/interfaces/user/index";
-import { Wrapper, ContainerWrapper, RateWrapper, RateNumber, Reviews, InfoContainer, EventTitle, EventInfo, LikeWrapper, LikeNumber, ContainerTitleWrapper, ContainerTextWrapper, TitleTextBlack } from "./styles";
+import { IEvent } from "@/interfaces/user/index";
+import { ImageContainer, Wrapper, ContainerWrapper, RateWrapper, RateNumber, Reviews, InfoContainer, EventTitle, EventInfo, LikeWrapper, LikeNumber, ContainerTitleWrapper, ContainerTextWrapper, TitleTextBlack } from "./styles";
+import Image from '../../../node_modules/next/image';
 
 
 interface Props {
@@ -20,12 +21,20 @@ export const EventRanked = ({event, index}: Props) => {
     return(
         <ContainerWrapper onClick={(e) => handleClick(event.id)}>
         <Wrapper>
-            <img 
+        <ImageContainer>
+            <Image 
                 src={`/images/position${index + 1}.svg`}
+                alt="logo"
+                width={1} height={1}
             />
-            <img 
+        </ImageContainer>
+        <ImageContainer>
+            <Image 
                 src={event.logo}
+                alt="logo"
+                width={1} height={1}
             />
+        </ImageContainer>
             <InfoContainer>
                 <RateWrapper>
                     <RateNumber>{event.points}</RateNumber>

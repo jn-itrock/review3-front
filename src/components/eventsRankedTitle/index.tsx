@@ -9,9 +9,7 @@ export const EventsRankedTitle = () => {
                     src="/images/topFive.png"
                 />
                 <ContainerTextWrapper>
-                    <TitleTextBlack style={{
-                        fontSize: "72px", fontWeight: "1000", color: "#3A3748"
-                    }}>events</TitleTextBlack>
+                    <TitleTextBlack>events</TitleTextBlack>
                     <TitleTextGreen>ranked</TitleTextGreen>
                 </ContainerTextWrapper>
             </ContainerTitleWrapper>

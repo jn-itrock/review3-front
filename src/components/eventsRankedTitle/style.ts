@@ -17,13 +17,39 @@ export const ContainerTextWrapper = styled.div`
 `;
 
 export const TitleTextBlack = styled.span`
-    font-size: ${({theme}) => theme.fonts.size.lg};
     font-weight: ${({theme}) => theme.fonts.weight.xxl};
     color: ${({theme}) => theme.colors.black}
+    font-size: ${({theme}) => theme.fonts.size.l};
+
+    @media (min-width: 320px) {
+        font-size: ${({theme}) => theme.fonts.size.l};
+    }
+
+    @media (min-width: 768px) {
+        font-size: ${({theme}) => theme.fonts.size.lg};
+    }
+
+    @media (min-width: 1024px) {
+        font-size: ${({theme}) => theme.fonts.size.lg};
+    }
 `;
 
 export const TitleTextGreen = styled.span`
-    font-size: ${({theme}) => theme.fonts.size.lg};
     font-weight: ${({theme}) => theme.fonts.weight.xxl};
-    color: ${({theme}) => theme.colors.green}
+    font-size: ${({theme}) => theme.fonts.size.l};
+
+    @media (min-width: 320px) {
+        font-size: ${({theme}) => theme.fonts.size.l};
+        color: ${({theme}) => theme.colors.green}
+    }
+
+    @media (min-width: 768px) {
+        font-size: ${({theme}) => theme.fonts.size.lg};
+        color: ${({theme}) => theme.colors.green}
+    }
+
+    @media (min-width: 1024px) {
+        font-size: ${({theme}) => theme.fonts.size.lg};
+        color: ${({theme}) => theme.colors.green}
+    }
 `;

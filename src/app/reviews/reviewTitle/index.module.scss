@@ -1,3 +1,5 @@
+@import '../../../styles/globals.scss';
+
 .reviewTitle{
     display: flex;
     justify-content: space-between;
@@ -7,11 +9,22 @@
     h1{
         color: var(--balck, #3A3748);
         font-family: Mulish;
-        font-size: 72px;
         font-style: normal;
         font-weight: 1000;
         line-height: 150%; /* 108px */
         margin: 0 4px 0 0;
+
+        @include custom-web-viewport(425px){
+            font-size: 35px;
+        }
+    
+        @include custom-web-viewport(768px){
+            font-size: 55px;
+        }
+    
+        @include custom-web-viewport(1024px){
+            font-size: 72px;
+        }
     }
 
     >div{
@@ -27,12 +40,23 @@
                 color: var(--balck, #3A3748);
                 text-align: right;
                 font-family: Mulish;
-                font-size: 27px;
                 font-style: normal;
                 font-weight: 700;
                 line-height: 150%; /* 40.5px */
                 letter-spacing: -0.297px;
                 margin: 0 4px 0 0;
+
+                @include custom-web-viewport(425px){
+                    font-size: 16px;
+                }
+            
+                @include custom-web-viewport(768px){
+                    font-size: 20px;
+                }
+            
+                @include custom-web-viewport(1024px){
+                    font-size: 27px;
+                }
             }
 
             img{
@@ -45,12 +69,23 @@
             color: var(--gray, #75737D);
             text-align: right;
             font-family: Mulish;
-            font-size: 18px;
             font-style: normal;
             font-weight: 400;
             line-height: 150%; /* 27px */
             letter-spacing: -0.198px;
             margin: 0 4px 0 0;
+
+            @include custom-web-viewport(425px){
+                font-size: 14px;
+            }
+        
+            @include custom-web-viewport(768px){
+                font-size: 16px;
+            }
+        
+            @include custom-web-viewport(1024px){
+                font-size: 18px;
+            }
         }
     }
 }
@@ -58,10 +93,21 @@
 .eventData{
     color: var(--balck, #3A3748);
     font-family: Mulish;
-    font-size: 24px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%; /* 36px */
     letter-spacing: -0.264px;
     margin: 0 4px 0 0;
+
+    @include custom-web-viewport(425px){
+        font-size: 16px;
+    }
+
+    @include custom-web-viewport(768px){
+        font-size: 20px;
+    }
+
+    @include custom-web-viewport(1024px){
+        font-size: 24px;
+    }
 }

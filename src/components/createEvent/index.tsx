@@ -5,7 +5,7 @@ interface Props {
 };
 
 interface IValuesProps {
-    id: string;
+    poapEventId: string;
     title: string;
     description: string;
 };
@@ -14,23 +14,28 @@ interface IValuesProps {
 export const CreateEvent = ({ setIsOpen }: Props) => {
 
     const [values, setValue] = useState<IValuesProps>({
-        id: "",
+        poapEventId: "",
         title: "",
         description: ""
     })
 
-    const { id, title, description } = values;
+    const { poapEventId, title, description } = values;
 
     const handleCreateEvent = async () =>{
         try{
-            let url = "http://10.10.0.243:3000/event"
+            let url = "http://192.168.0.115:3000/event"
+
+            const form = new FormData();
+
+            form.append("poapEventId", values.poapEventId)
+            form.append("title", values.title)
+            form.append("description", values.description)
 
         const apiResponse = await fetch(url, {
             method: "POST",
-            body: JSON.stringify(values)
+            body: form
         })
         const response = await apiResponse.json();
-        console.log("Esta es la respuesta", response);
         }catch(e){
             console.log("Este es el error", e);
         }
@@ -73,8 +78,8 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
                         padding: "8px 12px"
                     }}
                     placeholder='Identifier'
-                    name="id"
-                    value={id}
+                    name="poapEventId"
+                    value={poapEventId}
                     onChange={(e) => handleChange(e)}
                 />
                 <input
