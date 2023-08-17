@@ -1,17 +1,15 @@
 "use client";
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import {  Mulish} from 'next/font/google'
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
-import { polygon, polygonMumbai } from 'wagmi/chains';
-import { InjectedConnector } from 'wagmi/connectors/injected';
-import { publicProvider } from 'wagmi/providers/public';
-import { LensConfig, development, production } from '@lens-protocol/react-web';
+import { polygon } from 'wagmi/chains';
+import { LensConfig, development } from '@lens-protocol/react-web';
 import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
 import { LensProvider } from '@lens-protocol/react-web';
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 
-const inter = Inter({ subsets: ['latin'] })
+const mulish = Mulish({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -44,15 +42,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <>
+      <body className={mulish.className}>
         <WagmiConfig config={config}>
           <LensProvider config={lensConfig}>
             {children}
           </LensProvider>
         </WagmiConfig>
         <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-        </>
       </body>
     </html>
   )

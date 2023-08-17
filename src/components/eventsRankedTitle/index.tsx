@@ -1,3 +1,5 @@
+import Image from "next/image"
+import { ImageContainer } from "../eventsRanked/styles"
 import { ContainerTextWrapper, ContainerTitleWrapper, TitleTextBlack, TitleTextGreen } from "./style"
 
 
@@ -5,13 +7,17 @@ import { ContainerTextWrapper, ContainerTitleWrapper, TitleTextBlack, TitleTextG
 export const EventsRankedTitle = () => {
     return(
         <ContainerTitleWrapper>
-                <img 
-                    src="/images/topFive.png"
-                />
-                <ContainerTextWrapper>
-                    <TitleTextBlack>events</TitleTextBlack>
-                    <TitleTextGreen>ranked</TitleTextGreen>
-                </ContainerTextWrapper>
-            </ContainerTitleWrapper>
+          <ImageContainer style={{'marginLeft': '-12px'}}> 
+            <Image
+                src={'/images/topFive.png'}
+                alt="topFive"
+                width={300} height={132}
+            />
+          </ImageContainer>
+          <ContainerTextWrapper>
+            <TitleTextBlack>events</TitleTextBlack>
+            <TitleTextGreen>ranked</TitleTextGreen>
+          </ContainerTextWrapper>
+        </ContainerTitleWrapper>
     )
 }

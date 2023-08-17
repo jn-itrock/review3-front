@@ -23,16 +23,16 @@ export const EventRanked = ({event, index}: Props) => {
         <Wrapper>
         <ImageContainer>
             <Image 
-                src={`/images/position${index + 1}.svg`}
+                src={`/images/position${index + 1}.png`}
                 alt="logo"
-                width={1} height={1}
+                width={106} height={152}
             />
         </ImageContainer>
         <ImageContainer>
             <Image 
                 src={event.logo}
                 alt="logo"
-                width={1} height={1}
+                width={178} height={152}
             />
         </ImageContainer>
             <InfoContainer>
