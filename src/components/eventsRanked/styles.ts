@@ -2,10 +2,20 @@ import { styled } from "styled-components";
 
 
 export const ContainerWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 100%;
     cursor: pointer;
+    margin: auto;
+
+    @media (min-width: 320px) {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        width: 70%;
+    }
+
+    @media (min-width: 1024px) {
+        width: 50%;
+    }
 `;
 
 export const ContainerTitleWrapper = styled.div`
@@ -27,10 +37,29 @@ export const TitleTextBlack = styled.span< {isBlack: boolean }>`
 
 export const Wrapper = styled.div`
     display: flex;
-    width: 50%;
+    width: 100%;
     padding: 24px 0px;
     border-bottom: 1px solid #D3D3D3;
 `;
+
+export const ImageContainer = styled.div`
+    img{
+        @media (min-width: 320px) {
+            width: 50px;
+            height: 50px;
+        }
+    
+        @media (min-width: 768px) {
+            width: 100px;
+            height: 100px;
+        }
+    
+        @media (min-width: 1024px) {
+            width: 150px;
+            height: 150px;
+        }
+    }
+`
 
 
 export const RateWrapper = styled.div`
