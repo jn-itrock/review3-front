@@ -1,23 +1,42 @@
 import { HeaderContainer, ButtonDescription, HeaderButton } from "./styles";
-import { useActiveWallet } from '@lens-protocol/react-web';
+import { ProfileOwnedByMe, useActiveWallet } from '@lens-protocol/react-web';
+import { useWeb3Modal } from '@web3modal/react'
+import { useAccount } from 'wagmi'
+import { useActiveProfileSwitch, useActiveProfile, useProfilesOwnedByMe } from '@lens-protocol/react-web';
+
+import {
+    SignInWithLens, Theme, Size
+  } from '@lens-protocol/widgets-react'
+  
 
 interface Props {
-    onLoginClick: () => Promise<void>
+    profile: ProfileOwnedByMe | null | undefined
+    login: () => Promise<void>
+    isConnected: boolean
 }
 
-export const HomeHeader = ({ onLoginClick }: Props) => {
 
-    const { data: wallet, loading } = useActiveWallet();
 
+export const HomeHeader = ({ profile, login, isConnected }: Props) => {
+    const { data: activeProfile } = useActiveProfile();
+  
     return (
         <HeaderContainer>
+
             <ButtonDescription>Sart to recieve reviewes</ButtonDescription>
-            
+            <ButtonDescription>{ isConnected ? profile?.handle : ""}</ButtonDescription>
             <HeaderButton
-                onClick={() => onLoginClick()}
-            >
-                {wallet ? "Add your event" : "Login"}
+                disabled={isConnected} onClick={() => alert('abrir modal')}
+            > Add your event 
+            </HeaderButton>
+            <HeaderButton
+                onClick={() => login()}
+            > { isConnected ? activeProfile?.handle : ""} 
             </HeaderButton>
         </HeaderContainer>
     );
 };
+
+ 
+  
+  

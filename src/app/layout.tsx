@@ -8,6 +8,8 @@ import { publicProvider } from 'wagmi/providers/public';
 import { LensConfig, development } from '@lens-protocol/react-web';
 import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
 import { LensProvider } from '@lens-protocol/react-web';
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
+import { Web3Modal } from '@web3modal/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,23 +24,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const { publicClient, webSocketPublicClient } = configureChains(
-    [polygonMumbai, polygon],
-    [publicProvider()],
-  );
+  const chains = [polygon]
+  const projectId = 'f542afa6942831c90340b3297550a386'
+
+  const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
 
   const config = createConfig({
     autoConnect: true,
     publicClient,
-    webSocketPublicClient,
-    connectors: [
-      new InjectedConnector({
-        options: {
-          shimDisconnect: false,
-        },
-      }),
-    ],
+    connectors: w3mConnectors({ projectId, chains }),
   });
+  const ethereumClient = new EthereumClient(config, chains)
+
 
   const lensConfig: LensConfig = {
     bindings: wagmiBindings(),
@@ -48,11 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <>
         <WagmiConfig config={config}>
           <LensProvider config={lensConfig}>
             {children}
           </LensProvider>
         </WagmiConfig>
+        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+        </>
       </body>
     </html>
   )
