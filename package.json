@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lens-protocol/client": "^1.2.0",
     "@lens-protocol/react-web": "^1.2.2",
     "@lens-protocol/wagmi": "^2.0.2",
     "@lens-protocol/widgets-react": "^0.0.31",
