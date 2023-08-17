@@ -10,7 +10,7 @@ export const ContainerWrapper = styled.div`
     padding: 16px 22px 16px 39px;
 
     @media (min-width: 320px) {
-        width: 100%;
+        width: 85%;
     }
 
     @media (min-width: 768px) {
