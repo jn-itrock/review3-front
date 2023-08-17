@@ -18,7 +18,7 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
     const { data: activeProfile } = useActiveProfile();
     const upload = async (): Promise<string> =>{
         try{
-            let url = "http://10.10.1.179:3000/event"
+            let url = `https://eth-arg-api.itrock.com.ar/event/`
 
             const form = new FormData();
 
@@ -31,9 +31,17 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
             body: form
         })
         const response = await apiResponse.json();
-        console.log(response);
-        return `http://10.10.1.179:3000/event/${response._id}`
-        // return `http://192.168.0.115:3000/event/91929319319`
+        let urlResponse = `https://eth-arg-api.itrock.com.ar/event/${response._id}`
+        
+        const formPatch = new FormData();
+        formPatch.append("lensId", activeProfile?.id ?? "")
+
+        await fetch(urlResponse, {
+            method: "PATCH",
+            body: formPatch
+        })
+
+        return urlResponse;
         
         }catch(e){
             console.log("Este es el error", e);
@@ -64,6 +72,7 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
                 type: ReferencePolicyType.ANYONE
             }
         });
+
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

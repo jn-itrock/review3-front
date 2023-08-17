@@ -1,31 +1,50 @@
 "use client";
 import { useState } from 'react';
-import { useWalletLogin, useCreateProfile, useActiveProfile } from '@lens-protocol/react-web';
+import { useWalletLogin, useCreateProfile, useActiveProfile, usePublication, PublicationId } from '@lens-protocol/react-web';
 import { useAccount } from 'wagmi';
 import { theme } from "@/utils/theme"
 import { HomeHeader } from "@/components/homeHeader"
 import { InfoContainer } from "@/components/InfoContainer";
 import { EventRanked } from "@/components/eventsRanked";
 import { EventsRankedTitle } from "@/components/eventsRankedTitle";
-import { events } from "../../constants/index";
 import { useWeb3Modal } from '@web3modal/react'
 import { useEffect } from 'react';
 import { CreateEvent } from '@/components/createEvent';
 import { ThemeProvider } from "styled-components"
+import { HomeEvent } from '@/interfaces/events';
 
-interface Props {
-  data: Response | null;
-}
 
-export default function HomeClient({ data }: Props) {
+export default function HomeClient() {
   const { open } = useWeb3Modal()
-  const {address, isConnected } = useAccount()
+  const { address, isConnected } = useAccount()
   const { data: activeProfile } = useActiveProfile();
   const { execute: login } = useWalletLogin();
-  const [ isOpen, setIsOpen ] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { execute: create } = useCreateProfile();
+  const [eventsHome, setEventsHome] = useState<HomeEvent[]>([]);
 
+  useEffect(() => {
+    const getData = async () => {
 
+      // let url = "http://10.11.30.56:3000/event"
+      let url = "https://eth-arg-api.itrock.com.ar/event"
+      try {
+        const data = await fetch(url, {
+          method: "GET"
+        });
+
+        const response: HomeEvent[] = await data.json();
+
+        setEventsHome(response);
+
+      } catch (e) {
+        console.log("ERROR AL BUSCAR LOS EVENTOS", e)
+      }
+    }
+
+    getData();
+
+  }, [])
 
   useEffect(() => {
 
@@ -36,19 +55,19 @@ export default function HomeClient({ data }: Props) {
           address: address!
         })
 
-        if(!activeProfile){
-          await create({handle: "itrockdev"})
+        if (!activeProfile) {
+          await create({ handle: "itrockdev" })
         }
-      
-      }catch(e){
+
+      } catch (e) {
         console.error(e);
       }
-        
+
     }
     fetchData()
 
   }, [address])
- 
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,10 +76,10 @@ export default function HomeClient({ data }: Props) {
       <InfoContainer />
       <EventsRankedTitle />
 
-      {events.map((ele, index)=>(
-        <EventRanked event={ele} index={index}/>
+      {eventsHome.map((ele, index) => (
+        <EventRanked event={ele} index={index} />
       ))}
-      
+
     </ThemeProvider>
   )
 }

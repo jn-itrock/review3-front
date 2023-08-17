@@ -18,8 +18,10 @@ export interface IEvent {
 }
 
 export interface IReview{
-    user: IUser
-    rate: number
+    userId: IUser
+    stars: number
     description: string
-    likes:  number
+    _id: string;
+    date: string;
+    likes?: number | null
 }
