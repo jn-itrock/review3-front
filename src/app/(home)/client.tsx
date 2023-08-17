@@ -37,7 +37,7 @@ export default function HomeClient({ data }: Props) {
         })
 
         if(!activeProfile){
-          await create({handle: "itrockdev"})
+          await create({handle: "itrockdev1"})
         }
       
       }catch(e){

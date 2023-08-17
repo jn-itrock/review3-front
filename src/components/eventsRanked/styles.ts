@@ -93,7 +93,7 @@ export const EventTitle = styled.span`
   font-weight: ${({ theme }) => theme.fonts.weight.lg};
   color: ${({ theme }) => theme.colors.darkBlack};
   margin-top: 3px;
-  font-family: "Mulish";
+  /* font-family: "Mulish"; */
 `;
 
 export const EventInfo = styled.span`
