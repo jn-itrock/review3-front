@@ -1,6 +1,6 @@
 "use client";
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import {  Mulish} from 'next/font/google'
 import { WagmiConfig, configureChains, createConfig } from 'wagmi';
 import { polygon, polygonMumbai } from 'wagmi/chains';
 import { InjectedConnector } from 'wagmi/connectors/injected';
@@ -9,7 +9,8 @@ import { LensConfig, development } from '@lens-protocol/react-web';
 import { bindings as wagmiBindings } from '@lens-protocol/wagmi';
 import { LensProvider } from '@lens-protocol/react-web';
 
-const inter = Inter({ subsets: ['latin'] })
+const mulish = Mulish({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 // export const metadata: Metadata = {
 //   title: 'Create Next App',
@@ -47,7 +48,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={mulish.className}>
         <WagmiConfig config={config}>
           <LensProvider config={lensConfig}>
             {children}
