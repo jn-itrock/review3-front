@@ -42,7 +42,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={mulish.className}>
+      <body className={mulish.className} style={{'marginBottom': '200px'}}>
         <WagmiConfig config={config}>
           <LensProvider config={lensConfig}>
             {children}
