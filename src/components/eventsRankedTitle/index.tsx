@@ -7,7 +7,7 @@ import { ContainerTextWrapper, ContainerTitleWrapper, TitleTextBlack, TitleTextG
 export const EventsRankedTitle = () => {
     return(
         <ContainerTitleWrapper>
-          <ImageContainer style={{'marginLeft': '-12px'}}> 
+          <ImageContainer style={{'marginLeft': '-12px', 'alignSelf': "selft-start"}}> 
             <Image
                 src={'/images/topFive.png'}
                 alt="topFive"

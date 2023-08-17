@@ -26,7 +26,6 @@ export default function HomeClient() {
   useEffect(() => {
     const getData = async () => {
 
-      // let url = "http://10.11.30.56:3000/event"
       let url = "https://eth-arg-api.itrock.com.ar/event"
       try {
         const data = await fetch(url, {
@@ -56,7 +55,7 @@ export default function HomeClient() {
         })
 
         if (!activeProfile) {
-          await create({ handle: "itrockdev" })
+          await create({ handle: "itrockdev"})
         }
 
       } catch (e) {

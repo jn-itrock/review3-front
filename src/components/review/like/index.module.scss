@@ -1,19 +1,21 @@
 .like{
+  display: flex;
+  align-items: center;
+  span{
     display: flex;
     align-items: center;
-    
-    img{
-        width: 20px;
-        height: 20px;
-    }
-
+    background-color: #F2F1F4;
+    border-radius: 30px;
+    gap:5px;
+    padding:0 18px;
     h2{
-        color: var(--balck, #3A3748);
-        font-family: Mulish;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 150%; /* 21px */
-        letter-spacing: -0.154px;
+      color: var(--balck, #3A3748);
+      // font-family: Mulish;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%; /* 21px */
+      letter-spacing: -0.154px;
     }
+  }
 }

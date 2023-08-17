@@ -18,7 +18,7 @@ export interface IEvent {
 }
 
 export interface IReview{
-    userId: IUser
+    userId: string;
     stars: number
     description: string
     _id: string;

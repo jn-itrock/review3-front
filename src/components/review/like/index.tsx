@@ -7,9 +7,11 @@ interface ILike{
 
 export function Like({likes}: ILike){
     return (
-        <div className={styles.like}>
-            <Image src="/like/like.png" alt="avatar" width={1} height={1}/>
-            <h2>{likes}</h2>
-        </div>
+      <div className={styles.like}>
+        <span >
+          <Image src="/like/like.png" alt="avatar" width={20} height={20}/>
+            <h2 style={{'margin': '5px 0'}}>{likes}</h2>
+        </span>
+      </div>
     )
 }

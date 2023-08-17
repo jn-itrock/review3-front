@@ -20,6 +20,7 @@ export const ContainerWrapper = styled.div`
 
   @media (min-width: 320px) {
     width: 85%;
+    margin: auto;
   }
 
   @media (min-width: 768px) {

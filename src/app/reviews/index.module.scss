@@ -38,6 +38,7 @@
     
     .subtitle{
         color: var(--balck, #3A3748);
+        // font-family: Mulish;
         font-style: normal;
         font-weight: 700;
         line-height: 150%; /* 60px */
@@ -45,6 +46,7 @@
 
         @include custom-web-viewport(425px){
             font-size: 25px;
+            padding: 0 15px;
         }
     
         @include custom-web-viewport(768px){
@@ -55,4 +57,16 @@
             font-size: 40px;
         }
     }
+}
+
+.toBack {
+  position: fixed;
+  top: 85%;
+  right: 100px;
+  width: 60px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #08FB06;
+  cursor: pointer;
+  border: none;
 }

@@ -4,6 +4,7 @@ import { ImageContainer, Wrapper, ContainerWrapper, RateWrapper, RateNumber, Rev
 import Image from '../../../node_modules/next/image';
 import { ProfileId, PublicationId, usePublication, usePublications } from '@lens-protocol/react-web';
 import { HomeEvent } from '@/interfaces/events';
+import { useEffect } from 'react';
 
 
 interface Props {
@@ -22,6 +23,15 @@ export const EventRanked = ({ event, index }: Props) => {
 
     const handleClick = (id: string) => {
         router.push(`/reviews/${id}`)
+    }
+
+    const ratio = () => {
+        if(event.totalReviews > 0){
+           return event.totalStarts / event.totalReviews
+        }else{
+            return 0
+        }
+
     }
 
     return (
@@ -45,7 +55,7 @@ export const EventRanked = ({ event, index }: Props) => {
                         </ImageContainer>
                         <InfoContainer>
                             <RateWrapper>
-                                <RateNumber>{event.totalStarts}</RateNumber>
+                                <RateNumber>{ratio()}</RateNumber>
                                 <img
                                     src="/images/rate.svg"
                                     height={24}

@@ -18,7 +18,7 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
     const { data: activeProfile } = useActiveProfile();
     const upload = async (): Promise<string> =>{
         try{
-            let url = `https://eth-arg-api.itrock.com.ar/event/`
+            let url = `https://eth-arg-api.itrock.com.ar/event`
 
             const form = new FormData();
 
@@ -33,12 +33,19 @@ export const CreateEvent = ({ setIsOpen }: Props) => {
         const response = await apiResponse.json();
         let urlResponse = `https://eth-arg-api.itrock.com.ar/event/${response._id}`
         
-        const formPatch = new FormData();
-        formPatch.append("lensId", activeProfile?.id ?? "")
+        // const formPatch = new FormData();
+        // formPatch.append("lensId", activeProfile?.id ?? "")
+
+        const data = {
+            lensId: activeProfile?.id ?? ""
+        }
 
         await fetch(urlResponse, {
             method: "PATCH",
-            body: formPatch
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
         return urlResponse;
